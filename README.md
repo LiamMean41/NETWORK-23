@@ -33,7 +33,7 @@ The app **must be served over HTTP**. Opening `index.html` from disk will not wo
 both ES modules and MapLibre's web worker on `file://`.
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/LiamMean41/NETWORK-23.git
 cd network-23-terrain-scan
 python3 -m http.server 8000
 ```
