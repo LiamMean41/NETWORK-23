@@ -1,0 +1,13 @@
+/* Bottom control bar and shared button styling */
+
+#bar{ position:absolute; left:0; right:0; bottom:0; display:flex; gap:6px; padding:9px 12px 12px;
+      overflow-x:auto; scrollbar-width:none; background:linear-gradient(0deg, rgba(0,0,0,.85), transparent); }
+#bar::-webkit-scrollbar{ display:none; }
+.btn{ flex:0 0 auto; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+      color:var(--hud); background:rgba(0,0,0,.35); border:1.5px solid var(--dim); padding:9px 12px;
+      border-radius:2px; cursor:pointer; text-shadow:0 0 5px currentColor; white-space:nowrap;
+      transition:border-color .12s, color .12s, background .12s; }
+.btn:hover{ border-color:var(--hud); }
+.btn:active{ background:var(--dim); color:#000; text-shadow:none; }
+.btn.on{ border-color:var(--hud); color:var(--bright); background:rgba(255,176,0,.10); }
+.sep{ flex:0 0 auto; width:1px; background:var(--dim); opacity:.5; margin:2px 3px; }

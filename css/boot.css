@@ -1,0 +1,9 @@
+/* Boot / uplink notice, shown until the first tile source loads */
+
+#boot{ position:absolute; inset:0; z-index:9; display:flex; align-items:center; justify-content:center;
+       background:var(--bg); pointer-events:none; }
+#boot .box{ font-family:var(--mono); color:var(--hud); text-align:center; padding:24px 28px;
+            border:1.5px solid var(--dim); max-width:min(88vw,560px); text-shadow:0 0 6px currentColor; }
+#boot h1{ font-size:14px; letter-spacing:.14em; margin:0 0 10px; color:var(--bright); }
+#boot p{ font-size:11.5px; line-height:1.6; margin:6px 0; color:var(--mid); letter-spacing:.05em; }
+#boot .cur::after{ content:"_"; animation:blink 1s steps(2) infinite; }

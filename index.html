@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>NETWORK 23 // TERRAIN SCAN</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.7.3/maplibre-gl.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.7.3/maplibre-gl.min.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/effects.css" />
+<link rel="stylesheet" href="css/hud.css" />
+<link rel="stylesheet" href="css/controls.css" />
+<link rel="stylesheet" href="css/directions.css" />
+<link rel="stylesheet" href="css/boot.css" />
+
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <div id="map"></div>
+
+  <div id="hud">
+    <div class="corner tl ui"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+
+    <div id="head">
+      <div><div id="title">NETWORK 23 <small>// TERRAIN SCAN</small></div>SRC: OPENSTREETMAP · OFM</div>
+      <div class="r">DISPLAY MODE D-01<br>SESSION #040 / 12</div>
+    </div>
+
+    <div id="retic">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="60" cy="60" r="34" stroke-dasharray="3 5" opacity=".7"/>
+        <line x1="60" y1="8"  x2="60" y2="30"/><line x1="60" y1="90" x2="60" y2="112"/>
+        <line x1="8"  y1="60" x2="30" y2="60"/><line x1="90" y1="60" x2="112" y2="60"/>
+        <rect x="55" y="55" width="10" height="10" opacity=".9"/>
+      </svg>
+    </div>
+
+    <div id="tel">
+      <div><b>LAT</b> <span class="v" id="lat">--</span></div>
+      <div><b>LON</b> <span class="v" id="lon">--</span></div>
+      <div><b>ELV</b> <span class="v" id="zm">--</span> &nbsp; <b>BRG</b> <span class="v" id="brg">--</span> &nbsp; <b>TLT</b> <span class="v" id="ptc">--</span></div>
+    </div>
+
+    <div id="stat">
+      TILE UPLINK <span id="link">STANDBY</span><span class="dot"></span><br>
+      USER ACCESS RIGHTS: RESTRICTED
+    </div>
+
+    <div id="route-info" class="hidden">--</div>
+  </div>
+
+  <div id="fx"><div id="grid"></div><div id="scan"></div><div id="vig"></div><div id="flick"></div></div>
+
+  <div id="routebox">
+    <div class="lbl">◇ Directions</div>
+    <div class="field">
+      <input id="addrA" type="text" placeholder="From — address or place" autocomplete="off" spellcheck="false" />
+      <div class="ac" id="acA"></div>
+    </div>
+    <div class="field">
+      <input id="addrB" type="text" placeholder="To — address or place" autocomplete="off" spellcheck="false" />
+      <div class="ac" id="acB"></div>
+    </div>
+    <div class="row">
+      <button class="btn mini" id="rPlot">▶ PLOT</button>
+      <button class="btn mini" id="rClear">✕ CLEAR</button>
+    </div>
+    <div class="hint">Type to see suggestions. Tap the map or drag A / B to adjust.</div>
+    <div id="steps"></div>
+  </div>
+
+  <div id="bar" class="ui">
+    <button class="btn" data-go="dublin">DUBLIN</button>
+    <button class="btn" data-go="blanch">BLANCH</button>
+    <button class="btn" data-go="manhattan">NYC</button>
+    <button class="btn" data-go="london">LONDON</button>
+    <button class="btn" data-go="tokyo">TOKYO</button>
+    <div class="sep"></div>
+    <button class="btn on" id="tBld">◱ BUILDINGS</button>
+    <button class="btn on" id="tScan">▚ SCAN</button>
+    <button class="btn" id="tOrbit">◈ ORBIT</button>
+    <button class="btn" id="tPal">⬡ AMBER</button>
+    <button class="btn" id="tNorth">◎ NORTH</button>
+    <button class="btn" id="tRoute">⇄ ROUTE</button>
+    <button class="btn" id="tReset">⌖ RESET</button>
+  </div>
+
+  <div id="boot"><div class="box">
+    <h1>NETWORK 23 — TERRAIN SUBSYSTEM</h1>
+    <p id="bootmsg" class="cur">ESTABLISHING TILE UPLINK</p>
+    <p id="boothint" style="opacity:0">&nbsp;</p>
+  </div></div>
+</body>
+</html>

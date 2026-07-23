@@ -1,0 +1,34 @@
+/* HUD overlay: corner brackets, header, reticle, telemetry, status */
+
+/* overlay is non-interactive except elements marked .ui */
+#hud{ position:absolute; inset:0; pointer-events:none; z-index:5;
+      font-family:var(--mono); color:var(--hud); text-transform:uppercase;
+      letter-spacing:.08em; text-shadow:0 0 6px currentColor; }
+.ui{ pointer-events:auto; }
+
+/* corner brackets */
+.corner{ position:absolute; width:26px; height:26px; border:2px solid var(--hud); opacity:.9; }
+.tl{ top:12px; left:12px; border-right:0; border-bottom:0; }
+.tr{ top:12px; right:12px; border-left:0; border-bottom:0; }
+.bl{ bottom:12px; left:12px; border-right:0; border-top:0; }
+.br{ bottom:12px; right:12px; border-left:0; border-top:0; }
+
+/* header */
+#head{ position:absolute; top:14px; left:48px; right:48px; display:flex; justify-content:space-between; gap:12px; font-size:11px; }
+#head .r{ text-align:right; color:var(--mid); }
+#title{ font-size:13px; color:var(--bright); }
+#title small{ color:var(--dim); }
+
+/* center reticle */
+#retic{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); opacity:.55; }
+#retic svg{ display:block; }
+
+/* telemetry, bottom-left */
+#tel{ position:absolute; left:20px; bottom:64px; font-size:11px; line-height:1.5; color:var(--hud); }
+#tel b{ color:var(--dim); font-weight:400; }
+#tel .v{ color:var(--bright); }
+
+/* status, bottom-right */
+#stat{ position:absolute; right:20px; bottom:64px; font-size:10px; text-align:right; color:var(--mid); line-height:1.6; }
+.dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--accent);
+      box-shadow:0 0 8px var(--accent); animation:blink 1.4s steps(2) infinite; vertical-align:middle; margin-left:6px; }
